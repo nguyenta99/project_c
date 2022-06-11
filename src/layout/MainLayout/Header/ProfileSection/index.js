@@ -29,7 +29,7 @@ import {
 import AppContext from '../../../../AppContext';
 
 import PerfectScrollbar from 'react-perfect-scrollbar';
-
+import config from 'config'
 import { MainCard } from '../../../../components/Card';
 import Transitions from '../../../../components/extended/Transitions';
 import User1 from '../../../../assets/images/users/jinx.jpeg';
@@ -55,7 +55,7 @@ const ProfileSection = () => {
    * */
   const anchorRef = useRef(null);
   const handleLogout = async () => {
-    cookie.remove('token')
+    cookie.remove('token', { path: '/', domain: config.appDomain })
     window.location.href = '/'
   };
 
