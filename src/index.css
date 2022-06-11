@@ -1,0 +1,14 @@
+/* @font-face {
+  font-family: 'LexendDeca';
+  src: local('LexendDeca'), url("./fonts/Lexend_Deca/static/LexendDeca-Regular.ttf") format('ttf');
+  font-weight: bold;
+} */
+
+*{
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}

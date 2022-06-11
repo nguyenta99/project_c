@@ -1,0 +1,1 @@
+export { SecurityGateway as default } from './SecurityGateway'
