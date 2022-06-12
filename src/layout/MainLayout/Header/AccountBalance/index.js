@@ -94,8 +94,8 @@ const AccountBalance = (props) => {
                 color: theme.palette.secondary.light
               }
             }}
-            ref={anchorRef}
-            aria-controls={open ? 'menu-list-grow' : undefined}
+            // ref={anchorRef}
+            // aria-controls={open ? 'menu-list-grow' : undefined}
             aria-haspopup="true"
             color="inherit"
           >
@@ -105,7 +105,7 @@ const AccountBalance = (props) => {
           </Avatar>
         </ButtonBase>
       </Box>
-      <Popper
+      {/* <Popper
         placement={matchesXs ? 'bottom' : 'bottom-end'}
         open={open}
         anchorEl={anchorRef.current}
@@ -158,7 +158,7 @@ const AccountBalance = (props) => {
             </Paper>
           </Transitions>
         )}
-      </Popper>
+      </Popper> */}
     </>
   )
 }
