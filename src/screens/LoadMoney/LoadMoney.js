@@ -52,7 +52,7 @@ const LoadMoney = (props) => {
             <Typography color={theme.palette.error.main} fontWeight='bold' fontSize={16}>Dùng ngân hàng khác chuyển sang Vietcombank vẫn được (chuyển nhanh 24/7)!</Typography>
             <Typography color={theme.palette.error.main} fontWeight='bold' fontSize={16}>Sau khi chuyển tiền, tài khoản sẽ được tính nạp tiền sau ít phút!</Typography>
             <Typography color={theme.palette.error.main} fontWeight='bold' fontSize={16}>Nạp đủ số tiền sử dụng, số dư sẽ không được hoàn dưới mọi hình thức!</Typography>
-            <Typography color={theme.palette.error.main} fontWeight='bold' fontSize={16}>TỐI THIỂU 20.000 CHO MỖI LẦN NẠP!</Typography>
+            <Typography color={theme.palette.error.main} fontWeight='bold' fontSize={16}>TỐI THIỂU 20.000Đ CHO MỖI LẦN NẠP!</Typography>
             {/* <Typography color={theme.palette.error.main} fontWeight='bold' fontSize={16}>Hạn chế nạp tiền!</Typography> */}
           </Stack>
         </MainCard>
