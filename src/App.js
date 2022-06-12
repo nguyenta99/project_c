@@ -4,7 +4,6 @@ import AppProvider from './AppProvider'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import MetaTags from 'react-meta-tags';
-import fb_icon from './assets/images/facebook_icon.ico'
 
 const App = (props) => {
 
@@ -14,7 +13,7 @@ const App = (props) => {
         <title>Mua bán tài khoản quảng cáo</title>
         <meta name="description" content="Dịch vụ mua bán tài khoản quảng cáo Facebook." />
         <meta property="og:title" content="Mua bán Tài Khoản Quảng Cáo" />
-        <meta property="og:image" content={fb_icon} />
+        <meta property="og:image" content="https://d1g1nj7c6ilt37.cloudfront.net/upload_file/1a47e27a26390d45ba8ed5c2b3c36a_fb_img.jpeg" />
       </MetaTags>
       <AppProvider
         {...props}
