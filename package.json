@@ -38,6 +38,7 @@
     "react-dom": "^16.2.0",
     "react-dropzone": "^12.0.5",
     "react-image-gallery": "^1.2.8",
+    "react-meta-tags": "^1.0.1",
     "react-perfect-scrollbar": "^1.5.8",
     "react-redux": "^7.2.6",
     "react-ribbons": "^1.0.6",
