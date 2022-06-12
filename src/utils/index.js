@@ -53,10 +53,16 @@ const makeId = (length) => {
   return result;
 };
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'VND',
+});
+
 export {
   ActionableExceptionHandler,
   DefaultApiErrorHandler, 
   customStyles,
   makeId,
-  productMapping
+  productMapping,
+  formatter
 }

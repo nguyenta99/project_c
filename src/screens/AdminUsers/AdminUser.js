@@ -13,6 +13,7 @@ import { MainCard } from '../../components/Card'
 import { toast } from 'react-toastify'
 import { tableCellClasses } from '@mui/material/TableCell';
 import { ActionableExceptionHandler } from '../../utils'
+import { formatter } from '../../utils'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -124,18 +125,6 @@ const AdminUser = (props) => {
                 marginBottom: 10
               }}
             >
-              {/* <ToolBarAction
-                rightActions={[
-                  {
-                    text: 'Add user',
-                    color: 'primary',
-                    visible: true,
-                    action: () => {
-                      newUser()
-                    },
-                  }
-                ]}
-              /> */}
             </div>
           </Grid>
         </Grid>
@@ -151,11 +140,12 @@ const AdminUser = (props) => {
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell align="center" sx={{ width: '20%' }}>Name</StyledTableCell>
+                  <StyledTableCell align="center" sx={{ width: '15%' }}>Name</StyledTableCell>
                   <StyledTableCell align="center" sx={{ width: '20%' }}>Phone</StyledTableCell>
                   <StyledTableCell align="center" sx={{ width: '20%' }}>Created At</StyledTableCell>
                   <StyledTableCell align="center" sx={{ width: '15%' }}>Admin</StyledTableCell>
-                  <StyledTableCell align="center" sx={{ width: '25%' }}>Status</StyledTableCell>
+                  <StyledTableCell align="center" sx={{ width: '15%' }}>Status</StyledTableCell>
+                  <StyledTableCell align="center" sx={{ width: '15%' }}>Balance</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -175,6 +165,7 @@ const AdminUser = (props) => {
                         handleUpdateActive(row, event)
                       }} />
                     </StyledTableCell>
+                    <StyledTableCell align="center">{formatter.format(row.balance)}</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
