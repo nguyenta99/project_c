@@ -165,7 +165,7 @@ const AdminUser = (props) => {
                         handleUpdateActive(row, event)
                       }} />
                     </StyledTableCell>
-                    <StyledTableCell align="center">{formatter.format(row.balance)}</StyledTableCell>
+                    <StyledTableCell align="center">{formatter.format(row.balance || 0)}</StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>
