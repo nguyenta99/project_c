@@ -1,7 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 var path = require('path')
-// require('dotenv').config()
+require('dotenv').config()
 var webpack = require('webpack');
 
 module.exports = (env, argv) => {
@@ -16,8 +16,8 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: `[${process.env.WEBPACK_FILENAME}].bundle.${argv.mode}.js`,
-      chunkFilename: `[${process.env.WEBPACK_FILENAME}].bundle.${argv.mode}.js`
+      filename: argv.mode == 'development' ? `[name].bundle.version_1.0.2.js` : `[contenthash].bundle.version_1.0.2.js`,
+      chunkFilename: argv.mode == 'development' ? `[name].bundle.version_1.0.2.js` : `[contenthash].bundle.version_1.0.2.js`,
     },
     optimization: {
       runtimeChunk: 'single',
@@ -89,8 +89,8 @@ module.exports = (env, argv) => {
         excludeChunks: Object.keys({})
       }),
       new MiniCssExtractPlugin({
-        filename: `[${process.env.WEBPACK_FILENAME}].css`,
-        chunkFilename: `[${process.env.WEBPACK_FILENAME}].css`,
+        filename: argv.mode == 'development' ? '[name].css' : '[contenthash].css',
+        chunkFilename: argv.mode == 'development' ? '[name].css' : '[contenthash].css',
       }),
       new webpack.ProvidePlugin({
         'window.Quill': 'quill/dist/quill.js',
