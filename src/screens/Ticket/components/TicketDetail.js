@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import PaperItem from '../../../components/Paper/PaperItem'
-import { useTheme, Grid, Button, TextField, Box, Typography, Stack } from '@mui/material'
+import {
+  useTheme, Grid, Button, TextField, Box, Typography, Stack,
+  List, ListItem, Divider, ListItemAvatar, ListItemText, Avatar
+} from '@mui/material'
 import TicketResource from '../../../resources/TicketResource'
 import { IconBackspace } from '@tabler/icons'
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import moment from 'moment'
 import { ActionableExceptionHandler } from '../../../utils'
+import User1 from '../../../assets/images/users/jinx.jpeg'
+import AppContext from '../../../AppContext'
 
 const TicketDetail = (props) => {
   const theme = useTheme()
@@ -14,6 +19,8 @@ const TicketDetail = (props) => {
   const navigate = useNavigate()
   const params = useParams()
   const [comment, setComment] = useState(null)
+  const context = useContext(AppContext)
+  console.log(context)
 
   const getTicket = () => {
     if (params.id) {
@@ -22,7 +29,14 @@ const TicketDetail = (props) => {
         params: {
           include: 'comments'
         },
+        relatives: {
+          creator: {
+            resource: 'users',
+            foreignKey: 'creator_id',
+          }
+        },
         done: (response) => {
+          console.log(response)
           setTicket(response)
         },
         error: (error) => {
@@ -53,6 +67,7 @@ const TicketDetail = (props) => {
           action_data: action_data
         },
         done: (response) => {
+          setComment(null)
           getTicket()
           toast.success("Comment thành công")
         },
@@ -115,6 +130,41 @@ const TicketDetail = (props) => {
                 }}
               />
             </Stack>
+          </Grid>
+          <Grid item>
+            <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+              {
+                ticket &&
+                ticket.comments.map((comment, index) => {
+                  return (
+                    <div key={index}>
+                      <ListItem alignItems="flex-start">
+                        <ListItemAvatar>
+                          <Avatar alt="Remy Sharp" src={User1} />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={moment(comment.created_at).format('lll')}
+                          secondary={
+                            <React.Fragment>
+                              <Typography
+                                sx={{ display: 'inline' }}
+                                component="span"
+                                variant="body2"
+                                color="text.primary"
+                              >
+                                {comment.creator_id == ticket.creator.id ? ticket.creator.name : context.currentUser.name}
+                              </Typography>
+                              {` - ${comment.content}`}
+                            </React.Fragment>
+                          }
+                        />
+                      </ListItem>
+                      <Divider variant="inset" component="li" />
+                    </div>
+                  )
+                })
+              }
+            </List>
           </Grid>
         </Grid>
       </PaperItem>
