@@ -67,7 +67,6 @@ export default class FormModal extends React.Component {
       Object.keys(this.state.submitData.errors).forEach(item => {
         toast.error(this.state.submitData.errors[item][0])
       })
-      // console.log(this.state.submitData.errors)
     } else {
       this.setState({ submitting: true })
       if(config.action.onSubmit){
@@ -130,11 +129,13 @@ export default class FormModal extends React.Component {
                   submitting ?
                     <CircularProgress size={22} color='success' />
                     :
-                    <>{config.action?.title || 'Submit'}</>
+                    <>{config.action?.title || 'OK'}</>
                 }
               </Button>
             }
-            <Button onClick={this.handleClose} sx={{ marginRight: 2 }} >Huỷ</Button>
+            <Button onClick={this.handleClose} sx={{ marginRight: 2 }}
+              variant='outlined'
+            >Huỷ</Button>
           </DialogActions>
         </Dialog>
       </div>

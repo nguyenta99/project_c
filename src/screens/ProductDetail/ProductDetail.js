@@ -275,7 +275,7 @@ const ProductDetail = (props) => {
             Lịch sử giao dịch
           </Typography>
           <TableContainer component={Paper}>
-            <Table size='small'>
+            <Table>
               <TableHead>
                 <TableCell width={'15%'}><Typography variant='h5' fontWeight={'bold'}>Số ĐT</Typography></TableCell>
                 <TableCell width={'40%'}><Typography variant='h5' fontWeight={'bold'}>Nội dung</Typography></TableCell>

@@ -23,6 +23,47 @@ import { AdminVariant } from './screens/AdminVariant'
 import { HistoryMoney } from './screens/HistoryMoney'
 import LoadMoney from './screens/LoadMoney'
 import { HistoryBuying } from './screens/HistoryBuying'
+import Ticket from './screens/Ticket'
+import { TicketDetail } from './screens/Ticket/components'
+
+const commonComponents = [
+  {
+    path: '/account',
+    component: Account
+  },
+  {
+    path: '/products/:id',
+    component: ProductDetail
+  },
+  {
+    path: '/products',
+    component: ProductDetail
+  },
+  {
+    path: '/orders',
+    component: Order
+  },
+  {
+    path: '/history/buying',
+    component: HistoryBuying
+  },
+  {
+    path: '/history/add_money',
+    component: HistoryMoney
+  },
+  {
+    path: '/load_money',
+    component: LoadMoney
+  },
+  {
+    path: '/my_ticket',
+    component: Ticket
+  },
+  {
+    path: '/my_ticket/:id',
+    component: TicketDetail
+  }
+]
 
 const adminComponents = [
   {
@@ -41,34 +82,7 @@ const adminComponents = [
     path: '/admin/variants',
     component: AdminVariant
   },
-  {
-    path: '/account',
-    component: Account
-  },
-  {
-    path: '/products/:id',
-    component: ProductDetail
-  },
-  {
-    path: '/products',
-    component: ProductDetail
-  },
-  {
-    path: '/orders',
-    component: Order
-  },
-  {
-    path: '/history/buying',
-    component: HistoryBuying
-  },
-  {
-    path: '/history/add_money',
-    component: HistoryMoney
-  },
-  {
-    path: '/load_money',
-    component: LoadMoney
-  }
+  ...commonComponents
 ]
 
 const components = [
@@ -76,34 +90,7 @@ const components = [
     path: '/',
     component: ProductDetail
   },
-  {
-    path: '/account',
-    component: Account
-  },
-  {
-    path: '/products/:id',
-    component: ProductDetail
-  },
-  {
-    path: '/products',
-    component: ProductDetail
-  },
-  {
-    path: '/orders',
-    component: Order
-  },
-  {
-    path: '/history/buying',
-    component: HistoryBuying
-  },
-  {
-    path: '/history/add_money',
-    component: HistoryMoney
-  },
-  {
-    path: '/load_money',
-    component: LoadMoney
-  }
+  ...commonComponents
 ]
 
 const loggerStore = store => next => action => {

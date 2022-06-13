@@ -28,7 +28,7 @@ const utilities = {
                 },
                 {
                     id: 'via_xmdn',
-                    title: 'Via XMDN + 902',
+                    title: 'Via XMDT + 902',
                     type: 'item',
                     url: '/products/via_xmdn',
                     // target: true

@@ -1,6 +1,6 @@
-import { IconReportMoney } from '@tabler/icons';
+import { IconReportMoney, IconTicket } from '@tabler/icons';
 
-const icons = { IconReportMoney };
+const icons = { IconReportMoney, IconTicket };
 
 const features = {
     id: 'features',
@@ -13,6 +13,14 @@ const features = {
             type: 'item',
             url: `/load_money`,
             icon: icons.IconReportMoney,
+            breadcrumbs: false
+        },
+        {
+            id: 'my_ticket',
+            title: 'Ticket hỗ trợ',
+            type: 'item',
+            url: `/my_ticket`,
+            icon: icons.IconTicket,
             breadcrumbs: false
         }
     ]

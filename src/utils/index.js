@@ -37,7 +37,7 @@ const customStyles = (error) => {
 
 const productMapping = {
   "bm": "BM",
-  "via_xmdn": 'Via XMDN + 902',
+  "via_xmdn": 'Via XMDT + 902',
   "via_normal": 'Via Thường Live ADS!',
   "via_limit_50": 'Via Limit $50 + $250',
   "clone": 'Clone các loại'

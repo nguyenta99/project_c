@@ -65,14 +65,13 @@ const HistoryMoney = (props) => {
         <MainCard
           sx={{
             borderRadius: 2,
-            marginTop: 2,
             marginLeft: 2,
             marginRight: 2,
             minHeight: '10vh',
           }}
         >
           <TableContainer component={Paper}>
-            <Table size='small'>
+            <Table>
               <TableHead>
                 <TableCell width={'50%'}><Typography variant='h5' fontWeight={'bold'}>Số tiền</Typography></TableCell>
                 <TableCell width={'55%'}><Typography variant='h5' fontWeight={'bold'}>Đã nạp lúc</Typography></TableCell>

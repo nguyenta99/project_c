@@ -13,7 +13,7 @@ const DivComponent = styled('div')({
 
 const kinds = [
   { key: 1, text: 'BM', value: 'bm' },
-  { key: 2, text: 'Via XMDN + 902', value: 'via_xmdn' },
+  { key: 2, text: 'Via XMDT + 902', value: 'via_xmdn' },
   { key: 3, text: 'Via Thường Live ADS!', value: 'via_normal' },
   { key: 4, text: 'Via Limit $50 + $250', value: 'via_limit_50' },
   { key: 5, text: 'Clone các loại', value: 'clone' }
