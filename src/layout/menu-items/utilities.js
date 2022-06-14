@@ -59,10 +59,19 @@ const utilities = {
         {
             id: 'tuts',
             title: 'TUT hay',
-            type: 'item',
+            type: 'collapse',
             url: `/tuts`,
             icon: icons.IconPaperBag,
-            breadcrumbs: false
+            breadcrumbs: false,
+            children: [
+                {
+                    id: '2fa',
+                    title: 'Lấy mã 2FA',
+                    type: 'item',
+                    url: '/tuts/2fa',
+                    // target: true
+                },
+            ]
         }
     ]
 };

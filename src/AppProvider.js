@@ -25,6 +25,7 @@ import LoadMoney from './screens/LoadMoney'
 import { HistoryBuying } from './screens/HistoryBuying'
 import Ticket from './screens/Ticket'
 import { TicketDetail } from './screens/Ticket/components'
+import HaiFA from './screens/2FA'
 
 const commonComponents = [
   {
@@ -62,6 +63,14 @@ const commonComponents = [
   {
     path: '/my_ticket/:id',
     component: TicketDetail
+  },
+  {
+    path: '/tuts',
+    component: HaiFA
+  },
+  {
+    path: '/tuts/2fa',
+    component: HaiFA
   }
 ]
 

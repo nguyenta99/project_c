@@ -159,7 +159,15 @@ const ProductDetail = (props) => {
       <Grid container spacing={5}>
         {
           products.map((product, index) => (
-            <Grid item xs={12} sm={4} md={3} key={index} >
+            <Grid item xs={12} sm={4} md={3} key={index}
+              sx={{
+                cursor: 'pointer',
+                transition: 'transform .2s',
+                '&:hover': {
+                  transform: 'scale(1.1)'
+                }
+              }}
+            >
               <RibbonContainer className="custom-class">
                 <LeftCornerRibbon backgroundColor="#0088ff" color="#f0f0f0" fontFamily="Arial">
                   New
@@ -246,7 +254,7 @@ const ProductDetail = (props) => {
                         <Grid item xs={6} sm={6} md={6} lg={6}>
                           <StyledButton variant='outlined'
                             size='small'
-                            sx={{borderRadius: 4}}
+                            sx={{ borderRadius: 4 }}
                             startIcon={<ShoppingCartOutlinedIcon />}
                             onClick={() => handleBuy(product)}
                           >Mua ngay</StyledButton>
