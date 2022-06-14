@@ -14,7 +14,7 @@ const HaiFA = (props) => {
       { text: text}
     ).then(response => {
       const token = response.data.token
-      setResponse(text + "|" + token)
+      setResponse(text + " | " + token)
       setToken(token)
     })
   }
