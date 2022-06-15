@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Input, Button, Stack } from '@mui/material'
 import ProductResource from '../../../resources/Product'
 import AsyncSelect from 'react-select/async';
@@ -6,6 +6,8 @@ import { customStyles, makeId } from '../../../utils';
 
 const VariantImport = (props) => {
   const { submitData, handleChange } = props
+  const [currentPage, setCurrentPage] = useState(0)
+  const [perPage, setPerPage] = useState(25)
 
   const handleSelectFile = (event) => {
     handleChange('file', event.target.files[0])
@@ -24,6 +26,8 @@ const VariantImport = (props) => {
           loadOptions={(inputValue) => loadOptions(inputValue, function loadingData(inputValue) {
             return new Promise(resolve => {
               ProductResource.loader.fetchItems({
+                paging: { page: (currentPage || 1), perPage: perPage },
+                filters: {title: inputValue},
                 done: (response) => {
                   resolve(response)
                 },
