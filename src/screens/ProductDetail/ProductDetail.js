@@ -188,7 +188,7 @@ const ProductDetail = (props) => {
                               borderRadius: '50%',
                               width: 50,
                               height: 50,
-                              border: `2px solid ${theme.palette.primary.main}`,
+                              border: `2px solid ${productCounts[product.id] ? theme.palette.primary.main : theme.palette.warning.dark}`,
                               marginTop: 15,
                               marginLeft: 15,
                               display: 'flex',
@@ -197,7 +197,7 @@ const ProductDetail = (props) => {
                             }}
                           >
                             <Typography
-                              sx={{ fontWeight: 'bold', color: theme.palette.primary.main, fontSize: 14 }}
+                              sx={{ fontWeight: 'bold', color: productCounts[product.id] ? theme.palette.primary.main: theme.palette.warning.dark, fontSize: 14 }}
                             >
                               {productCounts[product.id] || 0}
                             </Typography>
