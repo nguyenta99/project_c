@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
   Grid, Stack, Typography, TableContainer, Table, TableBody, TableRow,
-  TableCell, TableHead, Paper, Tooltip, TablePagination
+  TableCell, TableHead, Paper, Tooltip, TablePagination, Chip
 } from '@mui/material'
 import ToolBarAction from '../../components/ToolBarAction'
 import PaperItem from '../../components/Paper/PaperItem'
@@ -130,6 +130,14 @@ const AdminVariant = (props) => {
     })
   }
 
+  const renderStatus = (status) => {
+    if(status == 'buyed'){
+      return <Chip color='success' label={status} />
+    }else if(status == 'active'){
+      return <Chip color='info' label={status} />
+    }
+  }
+
   return (
     <>
       <FormModal />
@@ -207,7 +215,9 @@ const AdminVariant = (props) => {
                     <StyledTableCell component="th" scope="row" align="center">
                       {row.account_uid}
                     </StyledTableCell>
-                    <StyledTableCell align="center">{row.status}</StyledTableCell>
+                    <StyledTableCell align="center">
+                      {renderStatus(row.status)}
+                    </StyledTableCell>
                     <StyledTableCell align="center">
                       <HtmlTooltip
                         title={
