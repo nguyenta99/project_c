@@ -89,6 +89,7 @@ const ProductDetail = (props) => {
 
   const getProduct = (kind) => {
     ProductResource.loader.fetchItems({
+      paging: { page: 0, perPage: 100 },
       filters: {
         kind: kind
       },
