@@ -17,6 +17,8 @@ import { peckPortalClient } from '../../api'
 import moment from 'moment'
 import _ from 'lodash'
 import { tooltipClasses } from '@mui/material/Tooltip';
+import Filter from '../../components/Filter'
+import { filters } from './filters'
 
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -65,10 +67,8 @@ const AdminVariant = (props) => {
   const [currentPage, setCurrentPage] = useState(0)
   const [perPage, setPerPage] = useState(25)
   const [recordCount, setRecordCount] = useState(0)
-
-  useEffect(() => {
-    getVariants()
-  }, [])
+  const [right, setRight] = useState(false)
+  const [formFilters, setFormFilters] = useState({})
 
   const handleChangePage = (event, page) => {
     setCurrentPage(page)
@@ -80,7 +80,7 @@ const AdminVariant = (props) => {
 
   useEffect(() => {
     getVariants()
-  }, [currentPage, perPage])
+  }, [currentPage, perPage, formFilters])
 
   const importVariants = () => {
     FormModal.show({
@@ -114,11 +114,20 @@ const AdminVariant = (props) => {
   }
 
   const getVariants = () => {
+    const filters = {}
+    Object.keys(formFilters).forEach(key => {
+      if (formFilters[key]) {
+        if (typeof formFilters[key] == 'object') {
+          filters[key] = formFilters[key].id
+        }
+      }
+    })
     VariantResource.loader.fetchItems({
       paging: { page: (currentPage || 1), perPage: perPage },
       params: {
         include: 'product'
       },
+      filters: filters,
       done: (response, meta) => {
         setVariants(response)
         setRecordCount(meta['Record Count'])
@@ -131,16 +140,35 @@ const AdminVariant = (props) => {
   }
 
   const renderStatus = (status) => {
-    if(status == 'buyed'){
+    if (status == 'buyed') {
       return <Chip color='success' label={status} />
-    }else if(status == 'active'){
+    } else if (status == 'active') {
       return <Chip color='info' label={status} />
     }
+  }
+
+  const handleChangeFilter = (event) => {
+    const { name, value } = event.target;
+    setFormFilters({ ...formFilters, [name]: value })
+  }
+
+  const handleDeleteFilter = (item) => {
+    delete formFilters[item]
+    setFormFilters({ ...formFilters })
   }
 
   return (
     <>
       <FormModal />
+      <Filter
+        right={right}
+        onClose={(side, open) => setRight(false)}
+        formState={formFilters}
+        onChange={handleChangeFilter}
+        onSearch={getVariants}
+        // resetFilter={this.resetFilter}
+        filters={filters}
+      />
       <PaperItem
         {...theme.typography.body2}
         color={theme.palette.text.secondary}
@@ -175,6 +203,14 @@ const AdminVariant = (props) => {
               <ToolBarAction
                 rightActions={[
                   {
+                    text: 'Filters',
+                    color: 'primary',
+                    visible: true,
+                    action: () => {
+                      setRight(true)
+                    },
+                  },
+                  {
                     text: 'Import',
                     color: 'primary',
                     visible: true,
@@ -185,6 +221,15 @@ const AdminVariant = (props) => {
                 ]}
               />
             </div>
+          </Grid>
+          <Grid item xs={12} sx={{marginLeft: 2}}>
+            <Stack direction={'row'} spacing={1}>
+              {
+                Object.keys(formFilters).map((item, index) => {
+                  return <Chip size='small' label={item} onDelete={() => handleDeleteFilter(item)} key={index} />
+                })
+              }
+            </Stack>
           </Grid>
         </Grid>
         <MainCard

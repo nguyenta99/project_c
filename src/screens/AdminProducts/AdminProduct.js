@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {
   Grid, Stack, Typography, Tab, Tabs, Box, TableContainer, Table, TableBody, TableRow,
-  TableCell, TableHead, Paper, Switch
+  TableCell, TableHead, Paper, Switch, TablePagination
 } from '@mui/material'
 import ToolBarAction from '../../components/ToolBarAction'
 import PaperItem from '../../components/Paper/PaperItem'
@@ -45,10 +45,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const AdminProduct = (props) => {
   const theme = useTheme()
   const [products, setProducts] = useState([])
+  const [currentPage, setCurrentPage] = useState(0)
+  const [perPage, setPerPage] = useState(25)
+  const [recordCount, setRecordCount] = useState(0)
 
   useEffect(() => {
     getProducts()
-  }, [])
+  }, [currentPage, perPage])
+
+  const handleChangePage = (event, page) => {
+    setCurrentPage(page)
+  }
+
+  const handleChangeRowsPerPage = (event) => {
+    setPerPage(event.target.value)
+  }
 
   const newProduct = (product) => {
     FormModal.show({
@@ -81,9 +92,10 @@ const AdminProduct = (props) => {
 
   const getProducts = () => {
     ProductResource.loader.fetchItems({
-      paging: { page: 1, perPage: 25 },
-      done: (response) => {
+      paging: { page: (currentPage || 1), perPage: perPage },
+      done: (response, meta) => {
         setProducts(response)
+        setRecordCount(meta['Record Count'])
       },
       error: (error) => {
         toast.error("Get product error")
@@ -205,7 +217,15 @@ const AdminProduct = (props) => {
               </TableBody>
             </Table>
           </TableContainer>
-
+          <TablePagination
+            rowsPerPageOptions={[25, 50, 100]}
+            component="div"
+            count={recordCount}
+            rowsPerPage={perPage}
+            page={currentPage}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
         </MainCard>
       </PaperItem>
     </>

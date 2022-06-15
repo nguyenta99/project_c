@@ -38,7 +38,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const AdminUser = (props) => {
   const theme = useTheme()
   const [users, setUsers] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(0)
   const [perPage, setPerPage] = useState(25)
   const [recordCount, setRecordCount] = useState(0)
 

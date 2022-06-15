@@ -7,9 +7,9 @@ import { makeStyles } from '@mui/styles'
 import { useTheme } from '@mui/material'
 
 const ToolBarAction = (props) => {
-  const { leftActions, rightActions, selectedAction, leftResetAction } = props 
+  const { leftActions, rightActions, selectedAction, leftResetAction } = props
   const theme = useTheme()
-  const useStyles = makeStyles({...CssConstant(theme)})
+  const useStyles = makeStyles({ ...CssConstant(theme) })
 
   const classes = useStyles()
 
@@ -40,21 +40,22 @@ const ToolBarAction = (props) => {
           >{leftResetAction.title}</a>
         }
       </Grid>
-      <Grid container item xs={12} sm={4} justifyContent="flex-end">
+      <Grid container item xs={12} sm={4} justifyContent="flex-end" spacing={1}>
         {rightActions && rightActions.filter(e => e.visible).map((ac, index) => (
-          <Button
-            key={index}
-            className={clsx(classes.button_normal, ac.color || 'primary', 'hb-button')}
-            sx={ac.sx}
-            color={ac.color || 'primary'}
-            onClick={ac.action}
-            size={ac.size || 'small'}
-            variant={ac.variant || 'contained'}
-            startIcon={ac.icon}
-            endIcon={ac.endIcon}
-          >
-            {ac.text}
-          </Button>
+          <Grid item key={index}>
+            <Button
+              className={clsx(classes.button_normal, ac.color || 'primary', 'hb-button')}
+              sx={ac.sx}
+              color={ac.color || 'primary'}
+              onClick={ac.action}
+              size={ac.size || 'small'}
+              variant={ac.variant || 'contained'}
+              startIcon={ac.icon}
+              endIcon={ac.endIcon}
+            >
+              {ac.text}
+            </Button>
+          </Grid>
         ))}
       </Grid>
     </Grid>
